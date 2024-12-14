@@ -12,7 +12,7 @@ There are many ways to grab your Monitor's EDID, Including:
 2. [Windows Regedit](#windows-regedit)
 
 #### 1 - Using Monitor Asset Manager
- MAM, scroll down to the bottom
+Launch Monitor Asset Manager and scroll down to the bottom in the **Asset information**
 You will want the raw data section from the **Asset information** panel, not the **Raw data** panel   
 
 ![image](https://github.com/user-attachments/assets/10d1a8fc-4466-4948-938a-7be1908d03c1)   
