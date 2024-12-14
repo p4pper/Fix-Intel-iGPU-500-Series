@@ -6,7 +6,8 @@ Fortunately, there is a simple solution. We can embed the monitor’s EDID direc
 ## Guide  
 ### Step 1  - Grab your Monitor's EDID
 Extended Display Identification Data (EDID) allows your monitor to communicate its capabilities to your computer.
-There are many ways to grab your Monitor's EDID,
+
+There are many ways to grab your Monitor's EDID, Including:
 1. [Monitor Asset Manager](#monitor-asset-manager)
 2. [Windows Regedit](#windows-regedit)
 
