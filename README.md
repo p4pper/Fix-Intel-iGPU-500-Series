@@ -80,7 +80,7 @@ Boot into macOS and check your VRAM size, if it's 7MB, then you need to patch yo
 If you change or upgrade your monitor, you will have to grab it's EDID all again.
 
 ### Acknowledgments 
-[Video tutorial by HackintoshClub](https://www.bilibili.com/video/BV1UW4y1J7J2/)  
+[Video tutorial by 乌龙蜜桃来一打](https://www.bilibili.com/video/BV1UW4y1J7J2/)  
 [ProperTree by corpnewt](https://github.com/corpnewt/ProperTree)   
 [Opencore by acidanthera](https://github.com/acidanthera/OpenCorePkg)   
 [Whatevergreen guide by acidanthera](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md#intel-uhd-graphics-610-655-coffee-lake-and-comet-lake-processors)
