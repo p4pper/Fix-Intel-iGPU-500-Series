@@ -81,6 +81,15 @@ Boot into macOS and check your VRAM size, if it's 7MB, then you need to patch yo
 ### Wrapping up   
 If you change or upgrade your monitor, you will have to grab it's EDID all again.
 
+### Proof   
+Injecting 3 EDIDs
+![Screenshot 2024-12-15 at 2 53 47 PM](https://github.com/user-attachments/assets/4ea381f4-cce4-447a-99fa-4776610d33b3)
+
+B560M Gaming Motherboard with only iGPU on macOS Sequoia 15.2.  
+
+![Screenshot 2024-12-15 at 2 58 14 PM](https://github.com/user-attachments/assets/613bfcf5-24ff-40f8-b149-ae8e28872c51)
+
+
 ### Acknowledgments 
 [Video tutorial by 乌龙蜜桃来一打](https://www.bilibili.com/video/BV1UW4y1J7J2/)  
 [ProperTree by corpnewt](https://github.com/corpnewt/ProperTree)   
