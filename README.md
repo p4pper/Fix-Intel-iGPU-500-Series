@@ -3,7 +3,13 @@ It is a well-known fact that macOS does not support iGPU functionality on 500-se
 
 Fortunately, there is a simple solution. We can embed the monitor’s EDID directly into the DeviceProperties configuration. This fix supports multiple monitors as well, but you’ll need to use Windows to extract the EDID and adjust your .plist configuration 
 
-## Step 1  - Grab your Monitor's EDID
+## Index   
+1. [Grab Monitor's EDID](#1-grab-your-monitors-edid)
+2. [Inject EDID into config.plist](#2-injecting-edid-into-configplist)
+3. [VRAM Patching](#3-vram-patching)
+4. [Fixing HDMI wake on sleep](#4-fixing-hdmi-wake-on-sleep)
+
+## 1. Grab your Monitor's EDID  
 Extended Display Identification Data (EDID) allows your monitor to communicate its capabilities to your computer.
 
 There are many ways to grab your Monitor's EDID, Including:
@@ -73,7 +79,7 @@ That's it, this is your monitor's EDID. If the other folders have the exact same
 Otherwise, use each EDID to inject the respective monitor into config.plist   
 
 
-## Step 2  - Injecting EDID into config.plist   
+## 2. Injecting EDID into config.plist   
 
 Open your config.plist file from Opencore using [**ProperTree**](https://github.com/corpnewt/ProperTree)   
 
@@ -108,9 +114,13 @@ Your AAPL values should look like this:
 | `AAPL01,override-no-connect`   | `00FFFFFFFFFFFF004C2D1A0D52515A5A071C010380301B782A5295A556549D250E5054BFEF80714F81C0810081809500A9C0B3000101023A801871382D40582C4500DD0C1100001E000000FD00324B1E5111000A202020202020000000FC00533232463335300A2020202020000000FF004834544B3230303735380A20200108` |
 | `AAPL02,override-no-connect`   | `00FFFFFFFFFFFF004C2D1A0D52515A5A071C010380301B782A5295A556549D250E5054BFEF80714F81C0810081809500A9C0B3000101023A801871382D40582C4500DD0C1100001E000000FD00324B1E5111000A202020202020000000FC00533232463335300A2020202020000000FF004834544B3230303735380A20200108` |
 
-## Step 3 - VRAM Patching   
+## 3. VRAM Patching   
 Test your config first if it gives an output. Remember, RecoveryOS does not use Graphics acceleration   
 Boot into macOS and check your VRAM size, if it's 7MB, then you need to patch your graphics using [Whatevergreen's guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)   
+
+## 4. Fixing HDMI wake on sleep   
+Likewise, this is related to GPU patching, there are many causes to this issue.  
+A quick fix is using ``igfxonln=1`` in the NVRAM boot arguments.
 
 ## Wrapping up   
 If you change or upgrade your monitor, you will have to grab it's EDID all again.
