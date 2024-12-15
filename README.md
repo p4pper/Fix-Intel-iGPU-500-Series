@@ -102,10 +102,9 @@ Head to ``DeviceProperties`` -> ``Add`` -> ``PciRoot(0x0)/Pci(0x2,0x0)``
 | `framebuffer-patch-enable`     | `01000000`                                                                                                                                                                                                                                                          |  
 
 
-We will inject our EDID code into ``AAPL00,override-no-connect``, ``AAPL01,override-no-connect`` and ``AAPL03,override-no-connect``.   
-each AAPL increment represents a monitor, If you have multiple monitors, each has it's own EDID; so inject respectively.   
-
-**Important, each monitor has it's own, unique EDID, Do not use one from somewhere else, even if it's the same monitor!**   
+We will inject our EDID code into `AAPL00,override-no-connect`, `AAPL01,override-no-connect`, and `AAPL03,override-no-connect`.  
+Each `AAPL` entry corresponds to a different monitor. If you have multiple monitors, every monitor has its own unique EDID, so make sure to inject the correct EDID into the corresponding `AAPL` entry for each monitor.    
+**Important:** Every monitor has its own unique EDID. Even if two monitors are the same model, do not use the EDID from another source. Always obtain your own EDID.
 
 Your AAPL values should look like this:  
 | **Key**                        | **Data**                                                                                                                                                                                                                                                   |
