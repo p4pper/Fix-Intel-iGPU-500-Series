@@ -3,13 +3,12 @@ It is a well-known fact that macOS does not support iGPU functionality on 500-se
 
 Fortunately, there is a simple solution. We can embed the monitor’s EDID directly into the DeviceProperties configuration. This fix supports multiple monitors as well, but you’ll need to use Windows to extract the EDID and adjust your .plist configuration 
 
-## Guide  
-### Step 1  - Grab your Monitor's EDID
+## Step 1  - Grab your Monitor's EDID
 Extended Display Identification Data (EDID) allows your monitor to communicate its capabilities to your computer.
 
 There are many ways to grab your Monitor's EDID, Including:
-1. [Monitor Asset Manager](#monitor-asset-manager)
-2. [Windows Regedit](#windows-regedit)
+1. [Monitor Asset Manager](#1---using-monitor-asset-manager)
+2. [Windows Regedit](#2---using-windows-regedit)
 
 #### 1 - Using Monitor Asset Manager
 [Download from EnTech Taiwan](https://www.entechtaiwan.com/util/moninfo.shtm)
@@ -36,10 +35,45 @@ Remove the whitespaces and ensure the text is in one line (even if it breaks due
 ![image](https://github.com/user-attachments/assets/9d9c4e02-a604-4de8-b0bd-81a69def9607)
 
 #### 2 - Using Windows Regedit
-It is possible to grab your EDID regedit, I'll implement the steps soon.
+**An Alternative way to grab your EDID without downloading a software.**
+
+Open windows regedit by searching it, or using Windows Run (``Ctrl+R``) and type ``regedit``   
+Go to this path ``Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\DISPLAY\SAM0D1A``   
+
+![image](https://github.com/user-attachments/assets/5e90dc1c-9058-4927-9f95-de84aac2591e)
+
+You wil find more than one folder inside this path. Expand all of them like this:   
+![image](https://github.com/user-attachments/assets/88bfaada-0473-4340-9117-54a3106689b2)  
+
+We only want the folders that has ``Device Parameters``  
+![image](https://github.com/user-attachments/assets/bdc53527-71fe-4520-93c3-00dc7b1412dc)
+
+Right click on each Device Parameter folder and export it to your desktop.  
+![image](https://github.com/user-attachments/assets/54311a1d-8ea7-430f-bdfa-522362ff6650)
+
+Open the export file(s) with notepad   
+![image](https://github.com/user-attachments/assets/ee039bd3-68ab-4794-b534-a8dbf97e7a5b)
+
+Only copy the hex data and paste it onto a new notepad file.
+![image](https://github.com/user-attachments/assets/3fe9afb8-315d-456c-ad71-1c605d6c7e7d)
+
+Remove the commas by using the Find & Replace function in notepad   
+Find: `,`  
+Replace: ` `  
+
+![image](https://github.com/user-attachments/assets/c6d1606c-f42f-48b9-b389-7f24c0ec5ad6)  
+
+Similarly, remove the backslashes  
+![image](https://github.com/user-attachments/assets/0573f64c-b731-4ef0-9e18-2ff2f21c963b)  
+
+Remove the whitespaces and ensure the hex data is in one line, even if it breaks due to word wrap.  
+![image](https://github.com/user-attachments/assets/75add6c1-7c07-4b90-99bc-a822932bebc5)
+
+That's it, this is your monitor's EDID. If the other folders have the exact same EDID, just use one of them.  
+Otherwise, use each EDID to inject the respective monitor into config.plist   
 
 
-### Step 2  - Injecting EDID into config.plist   
+## Step 2  - Injecting EDID into config.plist   
 
 Open your config.plist file from Opencore using [**ProperTree**](https://github.com/corpnewt/ProperTree)   
 
@@ -74,15 +108,15 @@ Your AAPL values should look like this:
 | `AAPL01,override-no-connect`   | `00FFFFFFFFFFFF004C2D1A0D52515A5A071C010380301B782A5295A556549D250E5054BFEF80714F81C0810081809500A9C0B3000101023A801871382D40582C4500DD0C1100001E000000FD00324B1E5111000A202020202020000000FC00533232463335300A2020202020000000FF004834544B3230303735380A20200108` |
 | `AAPL02,override-no-connect`   | `00FFFFFFFFFFFF004C2D1A0D52515A5A071C010380301B782A5295A556549D250E5054BFEF80714F81C0810081809500A9C0B3000101023A801871382D40582C4500DD0C1100001E000000FD00324B1E5111000A202020202020000000FC00533232463335300A2020202020000000FF004834544B3230303735380A20200108` |
 
-### Step 3 - VRAM Patching   
+## Step 3 - VRAM Patching   
 Test your config first if it gives an output. Remember, RecoveryOS does not use Graphics acceleration   
 Boot into macOS and check your VRAM size, if it's 7MB, then you need to patch your graphics using [Whatevergreen's guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)   
 
-### Wrapping up   
+## Wrapping up   
 If you change or upgrade your monitor, you will have to grab it's EDID all again.
 
-### Proof   
-Injecting 3 EDIDs.   
+## Proof
+Injecting 3 single-EDIDs.   
 
 ![Screenshot 2024-12-15 at 2 53 47 PM](https://github.com/user-attachments/assets/4ea381f4-cce4-447a-99fa-4776610d33b3)
 
