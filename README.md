@@ -1,4 +1,4 @@
-# Fix UHD630 Acceleration + Output on 500 Series Motherboards. 
+# Fix Intel iGPU Acceleration + Output on 500 Series Motherboards. 
 It is a well-known fact that macOS does not support iGPU functionality on 500-series motherboards out of the box. This typically results in one of three scenarios: hardware acceleration without video output, video output without hardware acceleration, or neither working properly.
 
 Fortunately, there is a simple solution. We can embed the monitor’s EDID directly into the DeviceProperties configuration. This fix supports multiple monitors as well, but you’ll need to use Windows to extract the EDID and adjust your .plist configuration 
